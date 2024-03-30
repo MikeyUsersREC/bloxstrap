@@ -249,26 +249,28 @@ namespace Bloxstrap
                 SetStatus("No zIntegration update found - continuing anyway you faggot");
             }
 
-            if (clientVersion.IsBehindDefaultChannel)
-            {
-                MessageBoxResult action = App.Settings.Prop.ChannelChangeMode switch
+            if (clientVersion) {
+                if (clientVersion.IsBehindDefaultChannel)
                 {
-                    ChannelChangeMode.Prompt => Frontend.ShowMessageBox(
-                        string.Format(Resources.Strings.Bootstrapper_ChannelOutOfDate, App.Settings.Prop.Channel, RobloxDeployment.DefaultChannel),
-                        MessageBoxImage.Warning,
-                        MessageBoxButton.YesNo
-                    ),
-                    ChannelChangeMode.Automatic => MessageBoxResult.Yes,
-                    ChannelChangeMode.Ignore => MessageBoxResult.No,
-                    _ => MessageBoxResult.None
-                };
+                    MessageBoxResult action = App.Settings.Prop.ChannelChangeMode switch
+                    {
+                        ChannelChangeMode.Prompt => Frontend.ShowMessageBox(
+                            string.Format(Resources.Strings.Bootstrapper_ChannelOutOfDate, App.Settings.Prop.Channel, RobloxDeployment.DefaultChannel),
+                            MessageBoxImage.Warning,
+                            MessageBoxButton.YesNo
+                        ),
+                        ChannelChangeMode.Automatic => MessageBoxResult.Yes,
+                        ChannelChangeMode.Ignore => MessageBoxResult.No,
+                        _ => MessageBoxResult.None
+                    };
 
-                if (action == MessageBoxResult.Yes)
-                {
-                    App.Logger.WriteLine("Bootstrapper::CheckLatestVersion", $"Changed Roblox channel from {App.Settings.Prop.Channel} to {RobloxDeployment.DefaultChannel}");
-
-                    App.Settings.Prop.Channel = RobloxDeployment.DefaultChannel;
-                    clientVersion = await RobloxDeployment.GetInfo(App.Settings.Prop.Channel, binaryType: binaryType);
+                    if (action == MessageBoxResult.Yes)
+                    {
+                        App.Logger.WriteLine("Bootstrapper::CheckLatestVersion", $"Changed Roblox channel from {App.Settings.Prop.Channel} to {RobloxDeployment.DefaultChannel}");
+    
+                        App.Settings.Prop.Channel = RobloxDeployment.DefaultChannel;
+                        clientVersion = await RobloxDeployment.GetInfo(App.Settings.Prop.Channel, binaryType: binaryType);
+                    }
                 }
             }
 
