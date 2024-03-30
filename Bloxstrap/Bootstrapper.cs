@@ -247,7 +247,7 @@ namespace Bloxstrap
             catch (HttpResponseException ex)
             {
                 SetStatus("No zIntegration update found - continuing anyway you faggot");
-                clientVersion = JsonSerializer.Deserialize<ClientVersion>('{"version": "0.618.0.6180546", "clientVersionUpload": "version-f573c8cc796e4c97", "bootstrapperVersion": "1, 6, 0, 6180546" }')!;
+                clientVersion = JsonSerializer.Deserialize<ClientVersion>("{\"version\": \"0.618.0.6180546\", \"clientVersionUpload\": \"version-f573c8cc796e4c97\", \"bootstrapperVersion\": \"1, 6, 0, 6180546\" }")!;
                 clientVersion.IsBehindDefaultChannel = false;
             }
 
