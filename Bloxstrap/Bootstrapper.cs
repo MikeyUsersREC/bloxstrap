@@ -267,8 +267,6 @@ namespace Bloxstrap
 
                 if (action == MessageBoxResult.Yes)
                 {
-                    App.Logger.WriteLine("Bootstrapper::CheckLatestVersion", $"Changed Roblox channel from {App.Settings.Prop.Channel} to {RobloxDeployment.DefaultChannel}");
-
                     App.Settings.Prop.Channel = RobloxDeployment.DefaultChannel;
                     clientVersion = await RobloxDeployment.GetInfo(App.Settings.Prop.Channel, binaryType: binaryType);
                 }
