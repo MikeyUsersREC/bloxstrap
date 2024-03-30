@@ -246,7 +246,7 @@ namespace Bloxstrap
             }
             catch (HttpResponseException ex)
             {
-                SetStatus("No zIntegration update found - continuing anyway you faggot")
+                SetStatus("No zIntegration update found - continuing anyway you faggot");
             }
 
             if (clientVersion.IsBehindDefaultChannel)
