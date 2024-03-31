@@ -246,7 +246,7 @@ namespace Bloxstrap
             }
             catch (HttpResponseException ex)
             {
-                SetStatus("zIntegration unauthorized - continuing anyway you fag");
+                SetStatus("Selected update channel unauthorized - continuing anyway");
                 clientVersion = JsonSerializer.Deserialize<ClientVersion>("{\"version\": \"0.618.0.6180546\", \"clientVersionUpload\": \"version-b5fea3b09ba1431d\", \"bootstrapperVersion\": \"1, 6, 0, 6180546\" }")!;
                 clientVersion.IsBehindDefaultChannel = false;
             }
