@@ -13,6 +13,7 @@ namespace Bloxstrap.Models
         public bool CheckForUpdates { get; set; } = true;
         public bool CreateDesktopIcon { get; set; } = true;
         public bool MultiInstanceLaunching { get; set; } = false;
+        public string SelectedHashForLaunch { get; set; } = "version-b5fea3b09ba1431d"; 
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
         [JsonPropertyName("OhHeyYouFoundMeAgain")]
