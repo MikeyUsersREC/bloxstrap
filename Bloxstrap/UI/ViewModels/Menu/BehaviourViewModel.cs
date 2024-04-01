@@ -100,11 +100,6 @@
             ChannelChangeMode.Ignore,
         };
 
-        public IReadOnlyCollection<string> VersionHashes => new string[]
-        {
-            "version-b5fea3b09ba1431d",
-            "PLACEHOLDER"
-        };
 
         public ChannelChangeMode SelectedChannelChangeMode
         {
