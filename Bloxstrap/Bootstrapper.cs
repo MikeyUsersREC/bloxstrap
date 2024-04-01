@@ -247,7 +247,7 @@ namespace Bloxstrap
             catch (HttpResponseException ex)
             {
                 SetStatus("Selected update channel unauthorized - continuing anyway");
-                clientVersion = JsonSerializer.Deserialize<ClientVersion>("{\"version\": \"0.618.0.6180546\", \"clientVersionUpload\": \"version-b5fea3b09ba1431d\", \"bootstrapperVersion\": \"1, 6, 0, 6180546\" }")!;
+                clientVersion = JsonSerializer.Deserialize<ClientVersion>("{\"version\": \"0.618.0.6180546\", \"clientVersionUpload\": \"version-ce84a24041574656\", \"bootstrapperVersion\": \"1, 6, 0, 6180546\" }")!;
                 clientVersion.IsBehindDefaultChannel = false;
             }
 
