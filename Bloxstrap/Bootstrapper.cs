@@ -246,8 +246,8 @@ namespace Bloxstrap
             }
             catch (HttpResponseException ex)
             {
-                SetStatus("channel unauthorized - continuing anyway");
-                clientVersion = JsonSerializer.Deserialize<ClientVersion>("{\"version\": \"0.618.0.6180546\", \"clientVersionUpload\": \"version-fbfdde43720d48d4\", \"bootstrapperVersion\": \"1, 6, 0, 6180546\" }")!;
+                SetStatus(App.Settings.Prop.Channel + " unauthorized - continuing anyway");
+                clientVersion = JsonSerializer.Deserialize<ClientVersion>("{\"version\": \"0.618.0.6180546\", \"clientVersionUpload\": \"version-0a63844f77b44d04\", \"bootstrapperVersion\": \"1, 6, 0, 6180546\" }")!;
                 clientVersion.IsBehindDefaultChannel = false;
             }
 
