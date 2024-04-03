@@ -200,7 +200,7 @@ namespace Bloxstrap
             // install/update roblox if the player location doesn't exist
             if (!File.Exists(_playerLocation))
                 // await InstallLatestVersion();
-                SetStatus("How have you fucked up this badly?")
+                SetStatus("How have you fucked up this badly?");
                 // throw;
             
             if (App.IsFirstRun)
