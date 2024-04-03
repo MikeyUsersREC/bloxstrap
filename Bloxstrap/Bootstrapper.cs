@@ -163,75 +163,76 @@ namespace Bloxstrap
             }
 
 #if !DEBUG
-            if (!App.IsFirstRun && App.Settings.Prop.CheckForUpdates)
-                await CheckForUpdates();
+            // if (!App.IsFirstRun && App.Settings.Prop.CheckForUpdates)
+                // await CheckForUpdates();
 #endif
 
             // ensure only one instance of the bootstrapper is running at the time
             // so that we don't have stuff like two updates happening simultaneously
-
-            bool mutexExists = false;
-
-            try
-            {
-                Mutex.OpenExisting("Bloxstrap_SingletonMutex").Close();
-                App.Logger.WriteLine(LOG_IDENT, "Bloxstrap_SingletonMutex mutex exists, waiting...");
-                SetStatus(Resources.Strings.Bootstrapper_Status_WaitingOtherInstances);
-                mutexExists = true;
-            }
-            catch (Exception)
-            {
-                // no mutex exists
-            }
-
-            // wait for mutex to be released if it's not yet
-            await using var mutex = new AsyncMutex(true, "Bloxstrap_SingletonMutex");
-            await mutex.AcquireAsync(_cancelTokenSource.Token);
-
-            // reload our configs since they've likely changed by now
-            if (mutexExists)
-            {
-                App.Settings.Load();
-                App.State.Load();
-            }
-
             await CheckLatestVersion();
+            await StartRoblox();
+            // bool mutexExists = false;
 
-            // install/update roblox if the player location doesn't exist
-            if (!File.Exists(_playerLocation))
-                // await InstallLatestVersion();
-                SetStatus("How have you fucked up this badly?");
-                // throw;
+            // try
+            // {
+            //     Mutex.OpenExisting("Bloxstrap_SingletonMutex").Close();
+            //     App.Logger.WriteLine(LOG_IDENT, "Bloxstrap_SingletonMutex mutex exists, waiting...");
+            //     SetStatus(Resources.Strings.Bootstrapper_Status_WaitingOtherInstances);
+            //     mutexExists = true;
+            // }
+            // catch (Exception)
+            // {
+            //     // no mutex exists
+            // }
+
+            // // wait for mutex to be released if it's not yet
+            // await using var mutex = new AsyncMutex(true, "Bloxstrap_SingletonMutex");
+            // await mutex.AcquireAsync(_cancelTokenSource.Token);
+
+            // // reload our configs since they've likely changed by now
+            // if (mutexExists)
+            // {
+            //     App.Settings.Load();
+            //     App.State.Load();
+            // }
+
+            // await CheckLatestVersion();
+
+            // // install/update roblox if the player location doesn't exist
+            // if (!File.Exists(_playerLocation))
+            //     // await InstallLatestVersion();
+            //     SetStatus("How have you fucked up this badly?");
+            //     // throw;
             
-            if (App.IsFirstRun)
-                App.ShouldSaveConfigs = true;
+            // if (App.IsFirstRun)
+            //     App.ShouldSaveConfigs = true;
 
-            MigrateIntegrations();
+            // MigrateIntegrations();
 
-            await InstallWebView2();
+            // await InstallWebView2();
 
-            App.FastFlags.Save();
-            await ApplyModifications();
+            // App.FastFlags.Save();
+            // await ApplyModifications();
 
-            if (App.IsFirstRun || FreshInstall)
-            {
-                Register();
-                RegisterProgramSize();
-            }
+            // if (App.IsFirstRun || FreshInstall)
+            // {
+            //     Register();
+            //     RegisterProgramSize();
+            // }
 
-            CheckInstall();
+            // CheckInstall();
 
-            // at this point we've finished updating our configs
-            App.Settings.Save();
-            App.State.Save();
-            App.ShouldSaveConfigs = false;
+            // // at this point we've finished updating our configs
+            // App.Settings.Save();
+            // App.State.Save();
+            // App.ShouldSaveConfigs = false;
 
-            await mutex.ReleaseAsync();
+            // await mutex.ReleaseAsync();
 
-            if (App.IsFirstRun && App.LaunchSettings.IsNoLaunch)
-                Dialog?.ShowSuccess(Resources.Strings.Bootstrapper_SuccessfullyInstalled);
-            else if (!App.LaunchSettings.IsNoLaunch && !_cancelFired)
-                await StartRoblox();
+            // if (App.IsFirstRun && App.LaunchSettings.IsNoLaunch)
+            //     Dialog?.ShowSuccess(Resources.Strings.Bootstrapper_SuccessfullyInstalled);
+            // else if (!App.LaunchSettings.IsNoLaunch && !_cancelFired)
+            //     await StartRoblox();
         }
 
         private async Task CheckLatestVersion()
