@@ -182,6 +182,7 @@ namespace Bloxstrap
             _latestVersionGuid = dirs[0].Split("\\").Last();
             _versionFolder = dirs[0];
             SetStatus(_latestVersionGuid);
+            List<string> modFolderFiles = new();
             foreach (string file in Directory.GetFiles(Paths.Modifications, "*.*", SearchOption.AllDirectories))
             {
                 // get relative directory path
