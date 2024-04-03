@@ -182,6 +182,40 @@ namespace Bloxstrap
             _latestVersionGuid = dirs[0].Split("\\").Last();
             _versionFolder = dirs[0];
             SetStatus(_latestVersionGuid);
+            foreach (string file in Directory.GetFiles(Paths.Modifications, "*.*", SearchOption.AllDirectories))
+            {
+                // get relative directory path
+                string relativeFile = file.Substring(Paths.Modifications.Length + 1);
+
+                // v1.7.0 - README has been moved to the preferences menu now
+                if (relativeFile == "README.txt")
+                {
+                    File.Delete(file);
+                    continue;
+                }
+
+                if (relativeFile.EndsWith(".lock"))
+                    continue;
+
+                modFolderFiles.Add(relativeFile);
+
+                string fileModFolder = Path.Combine(Paths.Modifications, relativeFile);
+                string fileVersionFolder = Path.Combine(_versionFolder, relativeFile);
+
+                if (File.Exists(fileVersionFolder) && MD5Hash.FromFile(fileModFolder) == MD5Hash.FromFile(fileVersionFolder))
+                {
+                    App.Logger.WriteLine(LOG_IDENT, $"{relativeFile} already exists in the version folder, and is a match");
+                    continue;
+                }
+
+                Directory.CreateDirectory(Path.GetDirectoryName(fileVersionFolder)!);
+
+                Filesystem.AssertReadOnly(fileVersionFolder);
+                File.Copy(fileModFolder, fileVersionFolder, true);
+                Filesystem.AssertReadOnly(fileVersionFolder);
+
+                App.Logger.WriteLine(LOG_IDENT, $"{relativeFile} has been copied to the version folder");
+            }
             // _versionPackageManifest = await PackageManifest.Get(_latestVersionGuid);
             // SetStatus("About to start Roblox");
             await StartRoblox();
