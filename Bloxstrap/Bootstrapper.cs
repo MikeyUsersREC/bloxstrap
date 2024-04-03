@@ -197,10 +197,11 @@ namespace Bloxstrap
 
             await CheckLatestVersion();
 
-            // install/update roblox if we're running for the first time, needs updating, or the player location doesn't exist
-            if (App.IsFirstRun || _latestVersionGuid != _versionGuid || !File.Exists(_playerLocation))
-                await InstallLatestVersion();
-
+            // install/update roblox if the player location doesn't exist
+            if (!File.Exists(_playerLocation))
+                // await InstallLatestVersion();
+                throw;
+            
             if (App.IsFirstRun)
                 App.ShouldSaveConfigs = true;
 
@@ -247,8 +248,9 @@ namespace Bloxstrap
             catch (HttpResponseException ex)
             {
                 // fbfdde43720d48d4 - current zFeatureSoundworks-Testing release
-                SetStatus(App.Settings.Prop.Channel + " unauthorized - continuing anyway");
-                clientVersion = JsonSerializer.Deserialize<ClientVersion>("{\"version\": \"0.618.0.6180546\", \"clientVersionUpload\": \"version-fbfdde43720d48d4\", \"bootstrapperVersion\": \"1, 6, 0, 6180546\" }")!;
+                SetStatus("Channel unauthorized - continuing anyway");
+                string[] dirs = Directory.GetDirectories(Paths.Versions, "version-*", SearchOption.TopDirectoryOnly);
+                clientVersion = JsonSerializer.Deserialize<ClientVersion>("{\"version\": \"0.618.0.6180546\", \"clientVersionUpload\": \"version-" + dirs[0] + "\", \"bootstrapperVersion\": \"1, 6, 0, 6180546\" }")!;
                 clientVersion.IsBehindDefaultChannel = false;
             }
 
