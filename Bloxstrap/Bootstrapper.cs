@@ -301,7 +301,7 @@ namespace Bloxstrap
         {
             const string LOG_IDENT = "Bootstrapper::StartRoblox";
 
-            SetStatus(Resources.Strings.Bootstrapper_Status_Starting);
+            SetStatus(_versionFolder);
 
             if (_launchCommandLine == "--app" && App.Settings.Prop.UseDisableAppPatch)
             {
