@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Forms;
-
+using System.IO;
+using System;
 using Microsoft.Win32;
 
 using Bloxstrap.Integrations;
@@ -171,7 +172,8 @@ namespace Bloxstrap
             // so that we don't have stuff like two updates happening simultaneously
             // await CheckLatestVersion();
             SetStatus("Channel unauthorized - continuing anyway");
-            string[] dirs = Directory.GetDirectories(Paths.Versions, "version-*", SearchOption.TopDirectoryOnly);
+            string[] dirs = Directory.GetDirectories(Paths.Versions, "version-*");
+            // SetStatus(dirs);
             ClientVersion clientVersion;
             clientVersion = JsonSerializer.Deserialize<ClientVersion>("{\"version\": \"0.618.0.6180546\", \"clientVersionUpload\": \"version-" + dirs[0] + "\", \"bootstrapperVersion\": \"1, 6, 0, 6180546\" }")!;
             clientVersion.IsBehindDefaultChannel = false;
