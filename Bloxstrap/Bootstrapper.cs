@@ -179,7 +179,7 @@ namespace Bloxstrap
             // clientVersion = JsonSerializer.Deserialize<ClientVersion>("{\"version\": \"0.618.0.6180546\", \"clientVersionUpload\": \"version-" + dirs[0] + "\", \"bootstrapperVersion\": \"1, 6, 0, 6180546\" }")!;
             // clientVersion.IsBehindDefaultChannel = false;
             SetStatus("Setting Manifest");
-            _latestVersionGuid = "version-" + dirs[0]
+            _latestVersionGuid = "version-" + dirs[0];
             _versionFolder = Path.Combine(Paths.Versions, _latestVersionGuid);
             _versionPackageManifest = await PackageManifest.Get(_latestVersionGuid);
             SetStatus("About to start Roblox");
