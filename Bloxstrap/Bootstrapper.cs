@@ -172,6 +172,7 @@ namespace Bloxstrap
             // await CheckLatestVersion();
             SetStatus("Channel unauthorized - continuing anyway");
             string[] dirs = Directory.GetDirectories(Paths.Versions, "version-*", SearchOption.TopDirectoryOnly);
+            ClientVersion clientVersion;
             clientVersion = JsonSerializer.Deserialize<ClientVersion>("{\"version\": \"0.618.0.6180546\", \"clientVersionUpload\": \"version-" + dirs[0] + "\", \"bootstrapperVersion\": \"1, 6, 0, 6180546\" }")!;
             clientVersion.IsBehindDefaultChannel = false;
             SetStatus("Setting Manifest");
