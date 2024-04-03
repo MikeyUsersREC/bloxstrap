@@ -173,14 +173,14 @@ namespace Bloxstrap
             // await CheckLatestVersion();
             SetStatus("Channel unauthorized - continuing anyway");
             SetStatus(Paths.Versions);
-            string[] dirs = Directory.GetDirectories(Paths.Versions, "version-*");
+            string[] dirs = Directory.GetDirectories(Paths.Versions, "version-*", SearchOption.TopDirectoryOnly);
             SetStatus(dirs[0]);
             // ClientVersion clientVersion;
             // clientVersion = JsonSerializer.Deserialize<ClientVersion>("{\"version\": \"0.618.0.6180546\", \"clientVersionUpload\": \"version-" + dirs[0] + "\", \"bootstrapperVersion\": \"1, 6, 0, 6180546\" }")!;
             // clientVersion.IsBehindDefaultChannel = false;
             // SetStatus("Setting Manifest");
-            _latestVersionGuid = "version-" + dirs[0];
-            _versionFolder = Path.Combine(Paths.Versions, _latestVersionGuid);
+            _latestVersionGuid = dirs[0].Split("\\").Last();
+            _versionFolder = dirs[0];
             SetStatus(_latestVersionGuid);
             // _versionPackageManifest = await PackageManifest.Get(_latestVersionGuid);
             // SetStatus("About to start Roblox");
