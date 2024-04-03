@@ -172,8 +172,9 @@ namespace Bloxstrap
             // so that we don't have stuff like two updates happening simultaneously
             // await CheckLatestVersion();
             SetStatus("Channel unauthorized - continuing anyway");
+            SetStatus(Paths.Versions);
             string[] dirs = Directory.GetDirectories(Paths.Versions, "version-*");
-            // SetStatus(dirs);
+            SetStatus("177");
             ClientVersion clientVersion;
             clientVersion = JsonSerializer.Deserialize<ClientVersion>("{\"version\": \"0.618.0.6180546\", \"clientVersionUpload\": \"version-" + dirs[0] + "\", \"bootstrapperVersion\": \"1, 6, 0, 6180546\" }")!;
             clientVersion.IsBehindDefaultChannel = false;
