@@ -39,7 +39,7 @@
                 {
                     Version = info.Version,
                     VersionGuid = info.VersionGuid,
-                    YourVerion = version,
+                    YourVersion = version,
                     Timestamp = info.Timestamp?.ToFriendlyString()!
                 };
 
