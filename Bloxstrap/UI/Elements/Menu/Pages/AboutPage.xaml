@@ -34,8 +34,6 @@
         </Grid>
         <StackPanel Orientation="Horizontal">
             <ui:Anchor Margin="0,16,4,0" Content="GitHub Repository" Icon="Code24" NavigateUri="https://github.com/mikeyusersrec/bloxstrap" />
-            <ui:Anchor Margin="4,16,4,0" Content="Issue Tracker" Icon="Chat48" NavigateUri="https://github.com/mikeyusersrec/bloxstrap/issues" />
-            <ui:Anchor Margin="4,16,4,0" Content="Build Wiki" Icon="BookQuestionMark24" NavigateUri="https://github.com/pizzaboxer/bloxstrap/wiki" />
             <ui:Anchor Margin="4,16,0,0" Content="Fast Flags Discord" Icon="Chat48" NavigateUri="https://discord.gg/fastflags" />
         </StackPanel>
 
