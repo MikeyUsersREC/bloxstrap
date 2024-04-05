@@ -72,13 +72,16 @@
                     <TextBlock Grid.Row="0" Grid.Column="0" Margin="0,0,16,8" VerticalAlignment="Center" Text="{x:Static resources:Strings.Menu_Behaviour_Channel_Version}" />
                     <TextBlock Grid.Row="0" Grid.Column="1" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding ChannelDeployInfo.Version, Mode=OneWay}" />
 
-                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,16,8" VerticalAlignment="Center" Text="{x:Static resources:Strings.Menu_Behaviour_Channel_VersionGuid}" />
-                    <TextBlock Grid.Row="1" Grid.Column="1" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding ChannelDeployInfo.VersionGuid, Mode=OneWay}" />
+                    <TextBlock Grid.Row="1" Grid.Column="0" Margin="0,0,16,8" VerticalAlignment="Center" Text="Your Version" />
+                    <TextBlock Grid.Row="1" Grid.Column="1" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding ChannelDeployInfo.YourVersion, Mode=OneWay}" />
 
-                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,16,0" VerticalAlignment="Center" Text="{x:Static resources:Strings.Menu_Behaviour_Channel_Deployed}" />
-                    <TextBlock Grid.Row="2" Grid.Column="1" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding ChannelDeployInfo.Timestamp, Mode=OneWay}" />
+                    <TextBlock Grid.Row="2" Grid.Column="0" Margin="0,0,16,8" VerticalAlignment="Center" Text="{x:Static resources:Strings.Menu_Behaviour_Channel_VersionGuid}" />
+                    <TextBlock Grid.Row="2" Grid.Column="1" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding ChannelDeployInfo.VersionGuid, Mode=OneWay}" />
 
-                    <StackPanel Grid.Row="3" Grid.ColumnSpan="2" Margin="0,16,0,0" Orientation="Horizontal">
+                    <TextBlock Grid.Row="3" Grid.Column="0" Margin="0,0,16,0" VerticalAlignment="Center" Text="{x:Static resources:Strings.Menu_Behaviour_Channel_Deployed}" />
+                    <TextBlock Grid.Row="3" Grid.Column="1" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Text="{Binding ChannelDeployInfo.Timestamp, Mode=OneWay}" />
+
+                    <StackPanel Grid.Row="4" Grid.ColumnSpan="2" Margin="0,16,0,0" Orientation="Horizontal">
                         <StackPanel.Style>
                             <Style TargetType="StackPanel">
                                 <Setter Property="Visibility" Value="Collapsed" />
