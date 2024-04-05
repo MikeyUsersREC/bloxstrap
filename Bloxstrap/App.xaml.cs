@@ -13,7 +13,7 @@ namespace Bloxstrap
     /// </summary>
     public partial class App : Application
     {
-        public const string ProjectName = "Bloxstrap";
+        public const string ProjectName = "Bloxstrap (Modified)";
         public const string ProjectAuthorDiscord = "mikey_erm";
         public const string ProjectRepository = "mikeyusersrec/bloxstrap";
         public const string RobloxPlayerAppName = "RobloxPlayerBeta";
@@ -26,7 +26,7 @@ namespace Bloxstrap
         public static bool ShouldSaveConfigs { get; set; } = false;
 
         public static bool IsSetupComplete { get; set; } = true;
-        public static bool IsFirstRun { get; set; } = true;
+        public static bool IsFirstRun { get; set; } = false;
 
         public static LaunchSettings LaunchSettings { get; private set; } = null!;
 
