@@ -13,5 +13,6 @@ namespace Bloxstrap.UI.ViewModels.Menu
 
         public Visibility BuildInformationVisibility => BuildMetadata.CommitRef.StartsWith("tag") ? Visibility.Collapsed : Visibility.Visible;
         public Visibility BuildCommitVisibility => string.IsNullOrEmpty(BuildMetadata.CommitHash) ? Visibility.Collapsed : Visibility.Visible;
+        public Visibility BuildAuthor => string.IsNullOrEmpty(App.ProjectAuthorDiscord) ? Visibility.Collapsed : Visibility.Visible;
     }
 }
