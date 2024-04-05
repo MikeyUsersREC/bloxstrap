@@ -29,11 +29,17 @@
 
                 ShowChannelWarning = info.IsBehindDefaultChannel;
                 OnPropertyChanged(nameof(ShowChannelWarning));
-
+                string[] dirs = Directory.GetDirectories(Paths.Versions, "version-*", SearchOption.TopDirectoryOnly);
+                string full_name = "";
+                full_name = dirs[0] + "\\RobloxPlayerBeta.exe";
+                var versionInfo = FileVersionInfo.GetVersionInfo(full_name);
+                string version = versionInfo.ProductVersion;
+                
                 ChannelDeployInfo = new DeployInfo
                 {
                     Version = info.Version,
                     VersionGuid = info.VersionGuid,
+                    YourVerion = version,
                     Timestamp = info.Timestamp?.ToFriendlyString()!
                 };
 
