@@ -3,7 +3,7 @@
 
 This version of Bloxstrap has the installation capabilities removed.
 
-This is used for utilising modifications for Bloxstrap, whilst staying on an unauthorized channel, old version, or anything that is naturally unsupported by Bloxstrap. Bloxstrap usually raises an error when you are on an unauthorized channel, so I've changed this to be a supported feature. **If you have any questions, contact mikey_erm#0 on Discord.**
+This is used for utilising modifications for Bloxstrap, whilst staying on an unauthorized channel, old version, or anything that is naturally unsupported by Bloxstrap. Bloxstrap usually raises an error when you are on an unauthorized channel, so I've changed this to be a supported feature. **If you have any questions, contact mikey_erm#0 on Discord, or via this [discord server](https://discord.gg/fastflags).**
 
 ## Special thanks
 * [@MaximumADHD](https://github.com/MaximumADHD) - Initially inspiring the idea for Bloxstrap with [Roblox Studio Mod Manager](https://github.com/MaximumADHD/Roblox-Studio-Mod-Manager).
